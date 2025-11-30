@@ -7,6 +7,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Notionのデータベースからマネーフォワードの請求書に転記するためのプログラム。
 それぞれのAPIを使用する。
 
+### 要件の詳細 
+- 西暦と月を入力して該当する案件だけを抽出できるようにする。 
+- 顧客ごと、月ごとにまとめて請求書を作成する。 
+- 案件は請求の明細として記載する。 
+- Notionの研修案件管理のプロパティで、請求が登録できたら、請求済みのチェックボックスをオンにする 
+
 ## Development Setup
 
 このプロジェクトは **uv** を使用したモダンなPythonプロジェクト管理を採用しています。

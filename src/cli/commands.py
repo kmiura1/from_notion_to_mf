@@ -491,6 +491,14 @@ def create_invoice(notion_id: Optional[str], dry_run: bool):
         if 'id' in result:
             formatters.print_info(f"請求書ID: {result['id']}")
 
+        # 請求済みフラグを更新
+        if invoice.source_id:
+            formatters.print_info("Notionの請求済みフラグを更新中...")
+            if notion.update_invoiced_status(invoice.source_id):
+                formatters.print_success("請求済みフラグを更新しました")
+            else:
+                formatters.print_warning("請求済みフラグの更新に失敗しました")
+
     except NotionToMFError as e:
         formatters.print_error(f"エラー: {e}")
         raise click.Abort()
@@ -583,15 +591,34 @@ def sync(status: str, dry_run: bool, limit: Optional[int]):
         formatters.print_info("MoneyForwardに請求書を作成中...")
         created_count = 0
         failed_count = 0
+        invoiced_project_ids = []
 
         for invoice in invoices:
             try:
                 mf_service.create_invoice(invoice)
                 created_count += 1
                 formatters.print_success(f"作成完了: {invoice.project_name}")
+
+                # 請求書作成成功後、元の案件IDを記録
+                if invoice.source_ids:
+                    # グループ化請求書の場合
+                    invoiced_project_ids.extend(invoice.source_ids)
+                elif invoice.source_id:
+                    # 通常の請求書の場合
+                    invoiced_project_ids.append(invoice.source_id)
+
             except Exception as e:
                 failed_count += 1
                 formatters.print_error(f"作成失敗: {invoice.project_name} - {e}")
+
+        # 請求済みフラグを更新
+        if invoiced_project_ids:
+            formatters.print_info("Notionの請求済みフラグを更新中...")
+            success, failed = notion.mark_projects_as_invoiced(invoiced_project_ids)
+            if success > 0:
+                formatters.print_success(f"請求済みフラグを更新: {success}件")
+            if failed > 0:
+                formatters.print_warning(f"フラグ更新失敗: {failed}件")
 
         # 結果表示
         formatters.print_info(f"\n=== 同期結果 ===")
