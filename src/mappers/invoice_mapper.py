@@ -226,3 +226,167 @@ class InvoiceMapper:
 
         logger.info(f"バッチ変換完了: {len(invoices)}件成功, {len(errors)}件エラー")
         return invoices, errors
+
+    def map_grouped_invoices(
+        self,
+        projects: list[TrainingProject],
+        skip_errors: bool = True
+    ) -> tuple[list[Invoice], list[str]]:
+        """研修案件を顧客×月でグループ化して請求書に変換
+
+        Args:
+            projects: 研修案件のリスト
+            skip_errors: エラーをスキップするか
+
+        Returns:
+            (成功した請求書のリスト, エラーメッセージのリスト)
+        """
+        from collections import defaultdict
+        from datetime import date as date_type
+        import calendar
+
+        # 顧客×月でグループ化
+        groups = defaultdict(list)
+        errors = []
+
+        for project in projects:
+            try:
+                # データ検証
+                if not project.customer_name:
+                    if not skip_errors:
+                        raise DataValidationError(f"{project.title}: 顧客名が設定されていません")
+                    errors.append(f"{project.title}: 顧客名が設定されていません")
+                    continue
+
+                if not project.start_date:
+                    if not skip_errors:
+                        raise DataValidationError(f"{project.title}: 開始日が設定されていません")
+                    errors.append(f"{project.title}: 開始日が設定されていません")
+                    continue
+
+                if project.amount is None or project.amount <= 0:
+                    if not skip_errors:
+                        raise DataValidationError(f"{project.title}: 金額が不正です")
+                    errors.append(f"{project.title}: 金額が不正です ({project.amount})")
+                    continue
+
+                # 顧客名と年月でグループ化キーを作成
+                year_month = (project.start_date.year, project.start_date.month)
+                group_key = (project.customer_name, year_month)
+                groups[group_key].append(project)
+
+            except Exception as e:
+                error_msg = f"{project.title}: {str(e)}"
+                errors.append(error_msg)
+                logger.warning(f"グループ化をスキップ: {error_msg}")
+                if not skip_errors:
+                    raise
+
+        # 各グループを請求書に変換
+        invoices = []
+        for (customer_name, (year, month)), group_projects in groups.items():
+            try:
+                invoice = self._create_grouped_invoice(
+                    customer_name=customer_name,
+                    year=year,
+                    month=month,
+                    projects=group_projects
+                )
+                invoices.append(invoice)
+                logger.info(f"グループ請求書を作成: {customer_name} {year}年{month}月 ({len(group_projects)}案件)")
+
+            except Exception as e:
+                error_msg = f"{customer_name} {year}年{month}月: {str(e)}"
+                errors.append(error_msg)
+                logger.warning(f"請求書作成をスキップ: {error_msg}")
+                if not skip_errors:
+                    raise
+
+        logger.info(f"グループ変換完了: {len(invoices)}件成功, {len(errors)}件エラー")
+        return invoices, errors
+
+    def _create_grouped_invoice(
+        self,
+        customer_name: str,
+        year: int,
+        month: int,
+        projects: list[TrainingProject],
+        payment_terms_days: int = 30
+    ) -> Invoice:
+        """グループ化された案件から請求書を作成
+
+        Args:
+            customer_name: 顧客名
+            year: 年
+            month: 月
+            projects: 研修案件のリスト
+            payment_terms_days: 支払期限日数（デフォルト: 30日）
+
+        Returns:
+            請求書データ
+        """
+        import calendar
+        from datetime import date as date_type, timedelta
+
+        # 請求日は該当月の末日
+        _, last_day = calendar.monthrange(year, month)
+        invoice_date = date_type(year, month, last_day)
+
+        # 支払期限の計算
+        due_date = invoice_date + timedelta(days=payment_terms_days)
+
+        # 明細行の作成（各案件を明細行として追加）
+        items = []
+        for project in projects:
+            item = InvoiceItem(
+                item_name=project.title,
+                quantity=1,
+                unit_price=Decimal(str(project.amount)),
+                amount=Decimal(str(project.amount)),
+                description=self._create_item_description(project),
+            )
+            items.append(item)
+
+        # 小計の計算
+        subtotal = sum(item.amount for item in items)
+
+        # 消費税の計算
+        tax_amount = (subtotal * self.tax_rate).quantize(Decimal("0"))
+
+        # 合計金額
+        total_amount = subtotal + tax_amount
+
+        # 備考の作成
+        notes_parts = [
+            f"{year}年{month}月分の研修案件（{len(projects)}件）",
+            "",
+            "案件一覧:",
+        ]
+        for i, project in enumerate(projects, 1):
+            notes_parts.append(f"{i}. {project.title} ({project.format_date_range()})")
+
+        notes = "\n".join(notes_parts)
+
+        # 顧客IDの取得（最初のプロジェクトから）
+        customer_id = projects[0].customer_id if projects else None
+
+        # 請求書番号の生成
+        invoice_number = f"{year:04d}{month:02d}-{customer_name}"
+
+        # 請求書作成
+        invoice = Invoice(
+            invoice_number=invoice_number,
+            invoice_date=invoice_date,
+            due_date=due_date,
+            customer_name=customer_name,
+            customer_id=customer_id,
+            items=items,
+            subtotal=subtotal,
+            tax_rate=self.tax_rate,
+            tax_amount=tax_amount,
+            total_amount=total_amount,
+            notes=notes,
+            project_name=f"{customer_name} {year}年{month}月分",
+        )
+
+        return invoice

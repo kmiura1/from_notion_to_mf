@@ -213,5 +213,6 @@ def _escape_csv(value: str) -> str:
         エスケープ済み文字列
     """
     if "," in value or '"' in value or "\n" in value:
-        return f'"{value.replace('"', '""')}"'
+        escaped = value.replace('"', '""')
+        return f'"{escaped}"'
     return value

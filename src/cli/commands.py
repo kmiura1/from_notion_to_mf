@@ -34,6 +34,16 @@ def cli():
     help='取得件数の上限'
 )
 @click.option(
+    '--year',
+    type=int,
+    help='西暦で絞り込み (例: 2025)'
+)
+@click.option(
+    '--month',
+    type=int,
+    help='月で絞り込み (1-12)'
+)
+@click.option(
     '--date-from',
     type=str,
     help='開始日の下限 (YYYY-MM-DD)'
@@ -68,6 +78,8 @@ def cli():
 def fetch(
     status: Optional[str],
     limit: Optional[int],
+    year: Optional[int],
+    month: Optional[int],
     date_from: Optional[str],
     date_to: Optional[str],
     amount_min: Optional[float],
@@ -81,12 +93,37 @@ def fetch(
     例:
         notion-to-mf fetch
         notion-to-mf fetch --status 完了
+        notion-to-mf fetch --year 2025 --month 1
         notion-to-mf fetch --format json --output data.json
         notion-to-mf fetch --limit 10 --format detailed
     """
     try:
         # 設定検証
         config.validate()
+
+        # 年月フィルタをdate_from/date_toに変換
+        if year or month:
+            from datetime import date as date_type
+            import calendar
+
+            # 年が指定されていない場合は現在の年
+            if not year:
+                year = date_type.today().year
+
+            # 月が指定されている場合は該当月のみ
+            if month:
+                if month < 1 or month > 12:
+                    formatters.print_error("月は1-12の範囲で指定してください")
+                    raise click.Abort()
+
+                # 該当月の初日と末日
+                _, last_day = calendar.monthrange(year, month)
+                date_from = f"{year:04d}-{month:02d}-01"
+                date_to = f"{year:04d}-{month:02d}-{last_day:02d}"
+            else:
+                # 月が指定されていない場合は該当年の全体
+                date_from = f"{year:04d}-01-01"
+                date_to = f"{year:04d}-12-31"
 
         # Notionサービス初期化
         notion = NotionService()
@@ -157,6 +194,16 @@ def fetch(
     help='ステータスでフィルタ'
 )
 @click.option(
+    '--year',
+    type=int,
+    help='西暦で絞り込み (例: 2025)'
+)
+@click.option(
+    '--month',
+    type=int,
+    help='月で絞り込み (1-12)'
+)
+@click.option(
     '--date-from',
     type=str,
     help='開始日の下限 (YYYY-MM-DD)'
@@ -175,6 +222,11 @@ def fetch(
     '--amount-max',
     type=float,
     help='金額の上限'
+)
+@click.option(
+    '--grouped',
+    is_flag=True,
+    help='顧客×月でグループ化して請求書を作成'
 )
 @click.option(
     '--output',
@@ -196,10 +248,13 @@ def fetch(
 )
 def export(
     status: Optional[str],
+    year: Optional[int],
+    month: Optional[int],
     date_from: Optional[str],
     date_to: Optional[str],
     amount_min: Optional[float],
     amount_max: Optional[float],
+    grouped: bool,
     output: str,
     skip_errors: bool,
     show_stats: bool
@@ -208,14 +263,39 @@ def export(
 
     \b
     例:
-        python -m src export --output invoices.json
-        python -m src export --status 完了 --output completed.json
-        python -m src export --date-from 2025-01-01 --date-to 2025-03-31 --output q1.json
-        python -m src export --amount-min 100000 --output large-projects.json
+        notion-to-mf export --output invoices.json
+        notion-to-mf export --status 完了 --output completed.json
+        notion-to-mf export --year 2025 --month 1 --grouped --output 2025-01.json
+        notion-to-mf export --date-from 2025-01-01 --date-to 2025-03-31 --output q1.json
+        notion-to-mf export --amount-min 100000 --output large-projects.json
     """
     try:
         # 設定検証
         config.validate()
+
+        # 年月フィルタをdate_from/date_toに変換
+        if year or month:
+            from datetime import date as date_type
+            import calendar
+
+            # 年が指定されていない場合は現在の年
+            if not year:
+                year = date_type.today().year
+
+            # 月が指定されている場合は該当月のみ
+            if month:
+                if month < 1 or month > 12:
+                    formatters.print_error("月は1-12の範囲で指定してください")
+                    raise click.Abort()
+
+                # 該当月の初日と末日
+                _, last_day = calendar.monthrange(year, month)
+                date_from = f"{year:04d}-{month:02d}-01"
+                date_to = f"{year:04d}-{month:02d}-{last_day:02d}"
+            else:
+                # 月が指定されていない場合は該当年の全体
+                date_from = f"{year:04d}-01-01"
+                date_to = f"{year:04d}-12-31"
 
         # サービス初期化
         notion = NotionService()
@@ -237,9 +317,13 @@ def export(
 
         formatters.print_info(f"{len(projects)}件の研修案件を取得しました")
 
-        # 請求書に変換
-        formatters.print_info("請求書形式に変換中...")
-        invoices, errors = mapper.map_batch(projects, skip_errors=skip_errors)
+        # 請求書に変換（グループ化オプションに応じて）
+        if grouped:
+            formatters.print_info("顧客×月でグループ化して請求書形式に変換中...")
+            invoices, errors = mapper.map_grouped_invoices(projects, skip_errors=skip_errors)
+        else:
+            formatters.print_info("請求書形式に変換中...")
+            invoices, errors = mapper.map_batch(projects, skip_errors=skip_errors)
 
         if errors:
             formatters.print_warning(f"{len(errors)}件のエラーがありました:")
