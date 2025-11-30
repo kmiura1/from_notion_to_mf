@@ -11,15 +11,29 @@ Notionの研修案件データベースからデータを取得し、MoneyForwar
 
 ## セットアップ
 
-### 1. 依存パッケージのインストール
+### 1. uvのインストール
+
+このプロジェクトは **uv** を使用したモダンなPythonプロジェクト管理を採用しています。
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
+# Windows (PowerShell)
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-### 2. 環境変数の設定
+### 2. 依存パッケージのインストール
+
+```bash
+# 依存関係のインストール
+uv sync
+
+# 開発依存関係も含めてインストール
+uv sync --all-extras
+```
+
+### 3. 環境変数の設定
 
 `.env`ファイルに以下の情報を設定：
 
@@ -34,33 +48,35 @@ NOTION_DATABASE_ID=your_database_id
 
 ```bash
 # Notionから研修案件を取得して表示
-python -m src fetch
+uv run python -m src.main fetch
+# または
+uv run notion-to-mf fetch
 
 # ステータスでフィルタ
-python -m src fetch --status 完了
+uv run notion-to-mf fetch --status 完了
 
 # 取得件数を制限
-python -m src fetch --limit 10
+uv run notion-to-mf fetch --limit 10
 
 # 詳細表示
-python -m src fetch --format detailed
+uv run notion-to-mf fetch --format detailed
 
 # JSON形式で出力
-python -m src fetch --format json
+uv run notion-to-mf fetch --format json
 
 # ファイルに出力
-python -m src fetch --format json --output data.json
-python -m src fetch --format csv --output data.csv
+uv run notion-to-mf fetch --format json --output data.json
+uv run notion-to-mf fetch --format csv --output data.csv
 ```
 
 ### コマンド一覧
 
 ```bash
 # ヘルプを表示
-python -m src --help
+uv run notion-to-mf --help
 
 # バージョン情報
-python -m src version
+uv run notion-to-mf version
 ```
 
 ## プロジェクト構造
@@ -76,7 +92,8 @@ from_notion_to_mf/
 ├── tests/                # テスト
 ├── .env                  # 環境変数（要作成）
 ├── .env.example          # 環境変数テンプレート
-└── requirements.txt      # 依存パッケージ
+├── pyproject.toml        # プロジェクト設定・依存関係
+└── uv.lock               # ロックファイル（自動生成）
 ```
 
 ## 開発状況
