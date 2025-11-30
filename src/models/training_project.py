@@ -36,6 +36,7 @@ class TrainingProject(BaseModel):
     notes: Optional[str] = Field(None, description="備考")
     created_time: Optional[datetime] = Field(None, description="作成日時")
     last_edited_time: Optional[datetime] = Field(None, description="最終更新日時")
+    invoiced: Optional[bool] = Field(None, description="請求済みフラグ")
 
     # 関連情報（今後実装）
     order_form_ids: List[str] = Field(default_factory=list, description="注文書ID")

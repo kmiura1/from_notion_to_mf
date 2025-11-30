@@ -373,6 +373,9 @@ class InvoiceMapper:
         # 請求書番号の生成
         invoice_number = f"{year:04d}{month:02d}-{customer_name}"
 
+        # 案件IDリストを作成
+        source_ids = [project.id for project in projects]
+
         # 請求書作成
         invoice = Invoice(
             invoice_number=invoice_number,
@@ -386,6 +389,7 @@ class InvoiceMapper:
             tax_amount=tax_amount,
             total_amount=total_amount,
             notes=notes,
+            source_ids=source_ids,
             project_name=f"{customer_name} {year}年{month}月分",
         )
 

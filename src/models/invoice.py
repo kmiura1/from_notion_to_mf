@@ -47,6 +47,7 @@ class Invoice(BaseModel):
     # メタ情報
     notes: Optional[str] = Field(None, description="備考")
     source_id: Optional[str] = Field(None, description="元データID (Notion)")
+    source_ids: List[str] = Field(default_factory=list, description="元データIDリスト (Notion) - グループ化請求書用")
     project_name: Optional[str] = Field(None, description="プロジェクト名")
 
     class Config:

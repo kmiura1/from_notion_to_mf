@@ -174,6 +174,10 @@ class NotionService:
         created_time = page.get("created_time")
         last_edited_time = page.get("last_edited_time")
 
+        # 請求済みフラグ
+        invoiced_prop = props.get("請求済み", {})
+        invoiced = self._extract_checkbox(invoiced_prop)
+
         return TrainingProject(
             id=page["id"],
             title=title,
@@ -191,6 +195,7 @@ class NotionService:
             notes=notes,
             created_time=self._parse_datetime(created_time) if created_time else None,
             last_edited_time=self._parse_datetime(last_edited_time) if last_edited_time else None,
+            invoiced=invoiced,
         )
 
     def _extract_title(self, prop: Dict[str, Any]) -> str:
@@ -251,6 +256,12 @@ class NotionService:
                 return select_obj.get("name")
         return None
 
+    def _extract_checkbox(self, prop: Dict[str, Any]) -> Optional[bool]:
+        """チェックボックスプロパティから値を抽出"""
+        if prop.get("type") == "checkbox":
+            return prop.get("checkbox", False)
+        return None
+
     def _parse_datetime(self, dt_str: str) -> datetime:
         """ISO8601形式の日時文字列をdatetimeに変換"""
         try:
@@ -284,3 +295,50 @@ class NotionService:
         except Exception as e:
             logger.warning(f"顧客名の取得に失敗: {customer_id} - {e}")
             return None
+
+    def update_invoiced_status(self, page_id: str, invoiced: bool = True) -> bool:
+        """研修案件の請求済みステータスを更新
+
+        Args:
+            page_id: 案件ページのID
+            invoiced: 請求済みフラグ（デフォルト: True）
+
+        Returns:
+            成功した場合True
+        """
+        try:
+            self.client.pages.update(
+                page_id=page_id,
+                properties={
+                    "請求済み": {
+                        "checkbox": invoiced
+                    }
+                }
+            )
+            logger.info(f"請求済みステータスを更新しました: {page_id} -> {invoiced}")
+            return True
+
+        except Exception as e:
+            logger.error(f"請求済みステータスの更新に失敗: {page_id} - {e}")
+            return False
+
+    def mark_projects_as_invoiced(self, project_ids: List[str]) -> tuple[int, int]:
+        """複数の研修案件を請求済みにマーク
+
+        Args:
+            project_ids: 案件ページIDのリスト
+
+        Returns:
+            (成功件数, 失敗件数)
+        """
+        success_count = 0
+        failed_count = 0
+
+        for project_id in project_ids:
+            if self.update_invoiced_status(project_id, True):
+                success_count += 1
+            else:
+                failed_count += 1
+
+        logger.info(f"請求済みマーク完了: 成功{success_count}件, 失敗{failed_count}件")
+        return success_count, failed_count
