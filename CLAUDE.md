@@ -4,10 +4,42 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Notionのデータベースからマネーフォワードの請求書に転記するためのプログラム。 
-それぞれのAPIを使用する。 
+Notionのデータベースからマネーフォワードの請求書に転記するためのプログラム。
+それぞれのAPIを使用する。
 
-## **研修案件管理** データベース（データソース: 研修の案件）のプロパティ一覧です。
+## Development Setup
+
+このプロジェクトは **uv** を使用したモダンなPythonプロジェクト管理を採用しています。
+
+### 環境構築
+
+```bash
+# uvのインストール（未インストールの場合）
+# Windows (PowerShell)
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# 依存関係のインストール
+uv sync
+
+# 開発依存関係も含めてインストール
+uv sync --all-extras
+
+# プログラムの実行
+uv run python -m src.main
+
+# またはコマンドラインツールとして
+uv run notion-to-mf --help
+```
+
+### プロジェクト構成
+
+- **パッケージ管理**: uv (高速なPythonパッケージマネージャー)
+- **依存関係定義**: `pyproject.toml`
+- **ロックファイル**: `uv.lock` (自動生成)
+- **Python バージョン**: 3.11+
+
+## **研修案件管理** データベース（データソース: 研修の案件）のプロパティ一覧
+
 https://www.notion.so/310735dca908424690146e780f0b0446/ds/139fdd5f99684704a2a829550ab8df29?db=5ef95ba6d8bd490ea6c226cdcbfcc261&source=copy_link
 
 1. **案件名**（title）
@@ -46,39 +78,20 @@ https://www.notion.so/310735dca908424690146e780f0b0446/ds/139fdd5f99684704a2a829
 - リダイレクトURI: http://localhost:8080/callback
 - **認証情報は `.env` ファイルで管理してください**
 
-
-## Current State
-
-CLAUDE.mdに追加するアーキテクチャ案を提示します。askモードのため直接編集はできませんが、以下をコピーして適用してください。
-
-
-[1 tool called]
-
-
-アーキテクチャ案を `CLAUDE.md` に追加しました。以下をファイルにコピーしてください。
-
-```markdown:CLAUDE.md
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Project Overview
-
-Notionのデータベースからマネーフォワードの請求書に転記するためのプログラム。 
-それぞれのAPIを使用する。 
-
-
 ## Architecture Design
 
 ### 技術スタック
 
-- **言語**: Python 3.13+
+- **言語**: Python 3.11+
+- **パッケージ管理**: uv
 - **主要ライブラリ**:
+  - `click`: CLIフレームワーク
   - `notion-client`: Notion API公式クライアント
   - `requests`: HTTP通信（マネーフォワード API連携用）
   - `python-dotenv`: 環境変数管理
   - `pydantic`: データバリデーション
-  - `logging`: ログ管理
+  - `rich`: リッチなCLI出力
+  - `tabulate`: テーブル形式の表示
 
 ### アーキテクチャ構成
 
@@ -131,8 +144,8 @@ from_notion_to_mf/
 │   │
 │   ├── services/
 │   │   ├── __init__.py
-│   │   ├── notion_service.py   # Notion API連携
-│   │   └── moneyforward_service.py  # マネーフォワード API連携
+│   │   ├── notion.py           # Notion API連携
+│   │   └── moneyforward.py     # マネーフォワード API連携
 │   │
 │   ├── mappers/
 │   │   ├── __init__.py
@@ -140,18 +153,20 @@ from_notion_to_mf/
 │   │
 │   ├── models/
 │   │   ├── __init__.py
-│   │   ├── notion_models.py    # Notionデータ構造
-│   │   └── invoice_models.py   # 請求書データ構造
+│   │   ├── training_project.py # Notionデータ構造
+│   │   └── invoice.py          # 請求書データ構造
 │   │
 │   ├── utils/
 │   │   ├── __init__.py
 │   │   ├── config.py           # 設定管理
 │   │   ├── logger.py           # ログ設定
-│   │   └── exceptions.py       # カスタム例外
+│   │   ├── exceptions.py       # カスタム例外
+│   │   └── auth.py             # 認証処理
 │   │
-│   └── orchestrator/
+│   └── cli/
 │       ├── __init__.py
-│       └── workflow.py         # ワークフロー制御
+│       ├── commands.py         # CLIコマンド
+│       └── formatters.py       # 出力フォーマット
 │
 ├── tests/
 │   ├── __init__.py
@@ -161,7 +176,8 @@ from_notion_to_mf/
 │
 ├── .env.example                # 環境変数テンプレート
 ├── .gitignore
-├── requirements.txt            # 依存パッケージ
+├── pyproject.toml              # プロジェクト設定・依存関係
+├── uv.lock                     # ロックファイル（自動生成）
 ├── README.md
 └── CLAUDE.md
 ```
@@ -201,13 +217,21 @@ from_notion_to_mf/
 - **データ整合性**: マッピングルールの明確化、データ検証（Pydantic使用）
 - **拡張性**: 他のデータソースへの対応、バッチ処理対応、スケジューリング対応
 
-### 実装の優先順位
+### 開発ワークフロー
 
-1. 環境構築（Python仮想環境、requirements.txt、.env.example）
-2. Notion API接続とテスト
-3. データマッピング仕様の定義
-4. データ変換ロジックの実装
-5. マネーフォワード API連携
-6. エラーハンドリングとログ機能の追加
+```bash
+# 新しい依存関係の追加
+uv add <package-name>
+
+# 開発依存関係の追加
+uv add --dev <package-name>
+
+# テストの実行
+uv run pytest
+
+# コードフォーマット
+uv run black src/
+
+# リンター実行
+uv run flake8 src/
 ```
-
