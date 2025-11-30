@@ -1,0 +1,443 @@
+[
+  {
+    "invoice_date": "2025-11-18",
+    "due_date": "2025-12-18",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4ファンデーション @TC社（v3.3） (PO-I2025116)",
+        "quantity": 1,
+        "unit_price": "140000.0",
+        "amount": "140000.0",
+        "description": "実施期間: 2025-11-17 〜 2025-11-18 / 参加人数: 6名 / 日数: 2日 / 場所: 三浦様のトレノケートドメインのアドレス宛 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 140000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 14000.0,
+    "total_amount": 154000.0,
+    "notes": "発注No: PO-I2025116\n依頼日：2025/11/10\nパートナー名：トレノケート株式会社\n担当者：渡邉/前場\n承認者：藤田\n合計額（税込）：¥154,000\n源泉所得税：交通費・宿泊費含んだ合計金額×10.21％\n\nNotion案件ID: 07f50088-fb15-4858-9890-cb91ea61e6f5",
+    "source_id": "07f50088-fb15-4858-9890-cb91ea61e6f5",
+    "project_name": "ITIL 4ファンデーション @TC社（v3.3） (PO-I2025116)"
+  },
+  {
+    "invoice_date": "2025-10-10",
+    "due_date": "2025-11-09",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4ファンデーション @NTTDU社（v3.3） (PO-I2025092)",
+        "quantity": 1,
+        "unit_price": "140000.0",
+        "amount": "140000.0",
+        "description": "実施期間: 2025-10-09 〜 2025-10-10 / 参加人数: 25名 / 日数: 2日 / 場所: 別途ご連絡\nパートナー名: NTTデータユニバーシティ / 形式: オンライン"
+      }
+    ],
+    "subtotal": 140000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 14000.0,
+    "total_amount": 154000.0,
+    "notes": "発注No: PO-I2025092\nパートナー名: NTTデータユニバーシティ\n担当者：渡邉/前場\n承認者：藤田\n依頼日：2025/10/02\n\n合計額（税込）：¥154,000\n源泉所得税：交通費・宿泊費含んだ合計金額×10.21％\n\nNotion案件ID: 19b3316c-f9ce-4ea8-b5d0-24ca919c4baa",
+    "source_id": "19b3316c-f9ce-4ea8-b5d0-24ca919c4baa",
+    "project_name": "ITIL 4ファンデーション @NTTDU社（v3.3） (PO-I2025092)"
+  },
+  {
+    "invoice_date": "2025-09-16",
+    "due_date": "2025-10-16",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "CTC PMアドバンス4（リスク対策編）2025/09/16",
+        "quantity": 1,
+        "unit_price": "70000.0",
+        "amount": "70000.0",
+        "description": "実施期間: 2025-09-16 / 日数: 1日 / 場所: 自宅 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 70000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 7000.0,
+    "total_amount": 77000.0,
+    "notes": "注文書No. KT250911-01C\n委託料金：¥70,000（税抜）\n\nNotion案件ID: 35850c7d-a550-45f4-b95d-ae56e733356c",
+    "source_id": "35850c7d-a550-45f4-b95d-ae56e733356c",
+    "project_name": "CTC PMアドバンス4（リスク対策編）2025/09/16"
+  },
+  {
+    "invoice_date": "2025-09-12",
+    "due_date": "2025-10-12",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "DASA DevOpsファンダメンタル 2025/09/11-12 (PO-I2025072)",
+        "quantity": 1,
+        "unit_price": "100000.0",
+        "amount": "100000.0",
+        "description": "実施期間: 2025-09-11 〜 2025-09-12 / 参加人数: 1名 / 日数: 2日 / 場所: 自宅 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 100000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 10000.0,
+    "total_amount": 110000.0,
+    "notes": "Partner Course Calendar\nZoom: https://us06web.zoom.us/j/86009786868\n\nNotion案件ID: 37c59071-a0de-42f9-8f45-6e32e91074ca",
+    "source_id": "37c59071-a0de-42f9-8f45-6e32e91074ca",
+    "project_name": "DASA DevOpsファンダメンタル 2025/09/11-12 (PO-I2025072)"
+  },
+  {
+    "invoice_date": "2025-10-03",
+    "due_date": "2025-11-02",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "CTC PMアドバンス2 2025/10/03",
+        "quantity": 1,
+        "unit_price": "70000.0",
+        "amount": "70000.0",
+        "description": "実施期間: 2025-10-03 / 日数: 1日 / 場所: 別途連絡 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 70000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 7000.0,
+    "total_amount": 77000.0,
+    "notes": "注文書No. KT251009-01C\n委託料金：¥70,000（税抜）\n支払期限：2025/11/28\n\nNotion案件ID: 4a45db51-f319-4fbf-b618-c826b4eb4f84",
+    "source_id": "4a45db51-f319-4fbf-b618-c826b4eb4f84",
+    "project_name": "CTC PMアドバンス2 2025/10/03"
+  },
+  {
+    "invoice_date": "2025-09-05",
+    "due_date": "2025-10-05",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4ファンデーション @FLM社 2025/09/04-05 (PO-I2025064)",
+        "quantity": 1,
+        "unit_price": "140000.0",
+        "amount": "140000.0",
+        "description": "実施期間: 2025-09-04 〜 2025-09-05 / 参加人数: 15名 / 日数: 2日 / 場所: 東京都港区港南2-15-2　品川インターシティB棟　品川ラーニングセンター / 形式: オフライン"
+      }
+    ],
+    "subtotal": 140000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 14000.0,
+    "total_amount": 154000.0,
+    "notes": "富士通ラーニングメディア\n\nNotion案件ID: 4b8dd27d-0df7-46ee-bcbd-86c48f4c91bd",
+    "source_id": "4b8dd27d-0df7-46ee-bcbd-86c48f4c91bd",
+    "project_name": "ITIL 4ファンデーション @FLM社 2025/09/04-05 (PO-I2025064)"
+  },
+  {
+    "invoice_date": "2025-09-19",
+    "due_date": "2025-10-19",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL4 HVITコース（v3.0） 2025/09/17-19",
+        "quantity": 1,
+        "unit_price": "240000.0",
+        "amount": "240000.0",
+        "description": "実施期間: 2025-09-17 〜 2025-09-19 / 参加人数: 8名 / 日数: 3日 / 場所: Zoom: https://us02web.zoom.us/j/86117124571 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 240000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 24000.0,
+    "total_amount": 264000.0,
+    "notes": "発注No: PO-I2025075\n依頼日: 2025/09/09\n講師料（税抜）: ¥240,000\n講師料（税込）: ¥264,000\nミーティングID: 861 1712 4571\n担当者: 渡邉/前場\n承認者: 藤田\n\nNotion案件ID: 5a4c0bd1-7122-47c9-adcc-278a4a303e38",
+    "source_id": "5a4c0bd1-7122-47c9-adcc-278a4a303e38",
+    "project_name": "ITIL4 HVITコース（v3.0） 2025/09/17-19"
+  },
+  {
+    "invoice_date": "2025-09-03",
+    "due_date": "2025-10-03",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "CTC PMアドバンス2（見積り編）2025/09/03",
+        "quantity": 1,
+        "unit_price": "70000.0",
+        "amount": "70000.0",
+        "description": "実施期間: 2025-09-03 / 日数: 1日 / 場所: 自宅 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 70000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 7000.0,
+    "total_amount": 77000.0,
+    "notes": "注文書No. KT250911-01C\n委託料金：¥70,000（税抜）\n\nNotion案件ID: 73c103db-fda3-4dab-b606-93ca163d772d",
+    "source_id": "73c103db-fda3-4dab-b606-93ca163d772d",
+    "project_name": "CTC PMアドバンス2（見積り編）2025/09/03"
+  },
+  {
+    "invoice_date": "2025-11-28",
+    "due_date": "2025-12-28",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "CTC PMアドバンス4 (PO-I2025116)",
+        "quantity": 1,
+        "unit_price": "70000.0",
+        "amount": "70000.0",
+        "description": "実施期間: 2025-11-28 / 日数: 1日 / 場所: 別途連絡 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 70000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 7000.0,
+    "total_amount": 77000.0,
+    "notes": "注文書No. KT251105-01C\n発注日：2025年10月24日\n支払期限：2025年12月31日\n請求期限：2025年12月03日\n合計額（税込）：¥253,000\n消費税：¥23,000\n\nNotion案件ID: 7caa90bb-6039-46ec-950b-1627d4c0fa16",
+    "source_id": "7caa90bb-6039-46ec-950b-1627d4c0fa16",
+    "project_name": "CTC PMアドバンス4 (PO-I2025116)"
+  },
+  {
+    "invoice_date": "2025-10-15",
+    "due_date": "2025-11-14",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "トレノケート IT基礎入門 2025/10/15",
+        "quantity": 1,
+        "unit_price": "70000.0",
+        "amount": "70000.0",
+        "description": "実施期間: 2025-10-15 / 日数: 1日 / 場所: 別途連絡 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 70000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 7000.0,
+    "total_amount": 77000.0,
+    "notes": "注文書No. KT251009-01C\n委託料金：¥70,000（税抜）\n支払期限：2025/11/28\n\nNotion案件ID: 85c54c27-bee6-4bd0-aa27-da123e89862f",
+    "source_id": "85c54c27-bee6-4bd0-aa27-da123e89862f",
+    "project_name": "トレノケート IT基礎入門 2025/10/15"
+  },
+  {
+    "invoice_date": "2025-11-27",
+    "due_date": "2025-12-27",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4 DSVコース @ITプレナーズ（v2.5） (PO-I2025120)",
+        "quantity": 1,
+        "unit_price": "240000.0",
+        "amount": "240000.0",
+        "description": "実施期間: 2025-11-25 〜 2025-11-27 / 参加人数: 9名 / 日数: 3日 / 場所: Zoom（オンライン）: https://us06web.zoom.us/j/89357189529 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 240000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 24000.0,
+    "total_amount": 264000.0,
+    "notes": "発注No: PO-I2025120\n依頼日：2025/11/17\nパートナー名：株式会社ITプレナーズジャパン・アジアパシフィック\n担当者：渡邉/前場\n承認者：藤田\n合計額（税込）：¥264,000\n源泉所得税：交通費・宿泊費含んだ合計金額×10.21％\n受講者人数：9名様\nミーティングURL：https://us06web.zoom.us/j/89357189529\nミーティングID：893 5718 9529\n\nNotion案件ID: 99a7d08b-eb29-4fc3-9e13-6970ab6ff15a",
+    "source_id": "99a7d08b-eb29-4fc3-9e13-6970ab6ff15a",
+    "project_name": "ITIL 4 DSVコース @ITプレナーズ（v2.5） (PO-I2025120)"
+  },
+  {
+    "invoice_date": "2025-09-02",
+    "due_date": "2025-10-02",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4ファンデーション @TC社 2025/09/01-02 (PO-I2025061)",
+        "quantity": 1,
+        "unit_price": "140000.0",
+        "amount": "140000.0",
+        "description": "実施期間: 2025-09-01 〜 2025-09-02 / 参加人数: 9名 / 日数: 2日 / 場所: 東京都新宿区西新宿6-8-1 住友不動産新宿オークタワー 20F / 形式: オフライン"
+      }
+    ],
+    "subtotal": 140000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 14000.0,
+    "total_amount": 154000.0,
+    "notes": "トレノケート株式会社\n\nNotion案件ID: 9f76c4de-e848-410a-8db4-32616aff86dd",
+    "source_id": "9f76c4de-e848-410a-8db4-32616aff86dd",
+    "project_name": "ITIL 4ファンデーション @TC社 2025/09/01-02 (PO-I2025061)"
+  },
+  {
+    "invoice_date": "2025-09-26",
+    "due_date": "2025-10-26",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4ファンデーション @NTTDU社 2025/09/25-26 (PO-I2025080)",
+        "quantity": 1,
+        "unit_price": "140000.0",
+        "amount": "140000.0",
+        "description": "実施期間: 2025-09-25 〜 2025-09-26 / 参加人数: 12名 / 日数: 2日 / 場所: 自宅 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 140000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 14000.0,
+    "total_amount": 154000.0,
+    "notes": "NTTデータユニバーシティ\n\nNotion案件ID: b8838ae1-90f7-4275-971c-4a8aa7837862",
+    "source_id": "b8838ae1-90f7-4275-971c-4a8aa7837862",
+    "project_name": "ITIL 4ファンデーション @NTTDU社 2025/09/25-26 (PO-I2025080)"
+  },
+  {
+    "invoice_date": "2025-09-10",
+    "due_date": "2025-10-10",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL4 DPI 2025/09/08-10 (PO-I2025066)",
+        "quantity": 1,
+        "unit_price": "210000.0",
+        "amount": "210000.0",
+        "description": "実施期間: 2025-09-08 〜 2025-09-10 / 参加人数: 6名 / 日数: 3日 / 場所: 自宅 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 210000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 21000.0,
+    "total_amount": 231000.0,
+    "notes": "Partner Course Calendar\nZoom: https://us02web.zoom.us/j/81776780046\n\nNotion案件ID: c8ff05e3-891a-47b8-b02d-9a0ae537119f",
+    "source_id": "c8ff05e3-891a-47b8-b02d-9a0ae537119f",
+    "project_name": "ITIL4 DPI 2025/09/08-10 (PO-I2025066)"
+  },
+  {
+    "invoice_date": "2025-10-31",
+    "due_date": "2025-11-30",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4ファンデーション @TC社（v3.3） (PO-I2025103)",
+        "quantity": 1,
+        "unit_price": "140000.0",
+        "amount": "140000.0",
+        "description": "実施期間: 2025-10-30 〜 2025-10-31 / 参加人数: 4名 / 日数: 2日 / 場所: 三浦様のトレノケートドメインのアドレス宛に届きます（もし開催2営業日前までに届かないようでしたら、お知らせください） / 形式: オンライン"
+      }
+    ],
+    "subtotal": 140000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 14000.0,
+    "total_amount": 154000.0,
+    "notes": "発注No: PO-I2025103\n依頼日: 2025/10/23\n担当者: 渡邉/前場\n承認者: 藤田\n\n講師料（税抜）: ¥70,000 × 2日 = ¥140,000\n10％消費税: ¥14,000\n合計額（税込）: ¥154,000\n源泉所得税: 交通費・宿泊費含んだ合計金額×10.21％\n\n時間: 9:00-17:30\nパートナー名: トレノケート株式会社\n\n備考:\n・内容確認後、講師依頼確認書を依頼日より1週間以内に返送\n・請求書は研修終了後、早めに送付\n\nNotion案件ID: c922246b-b5f3-4b61-8879-e3c289c42d51",
+    "source_id": "c922246b-b5f3-4b61-8879-e3c289c42d51",
+    "project_name": "ITIL 4ファンデーション @TC社（v3.3） (PO-I2025103)"
+  },
+  {
+    "invoice_date": "2025-09-24",
+    "due_date": "2025-10-24",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "CTCT PMアドバンス2（見積り編）2025/09/24",
+        "quantity": 1,
+        "unit_price": "70000.0",
+        "amount": "70000.0",
+        "description": "実施期間: 2025-09-24 / 日数: 1日 / 場所: 自宅 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 70000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 7000.0,
+    "total_amount": 77000.0,
+    "notes": "注文書No. KT250911-01C\n委託料金：¥70,000（税抜）\n\nNotion案件ID: d2cfa3de-f25c-4137-b7ba-8001913e551c",
+    "source_id": "d2cfa3de-f25c-4137-b7ba-8001913e551c",
+    "project_name": "CTCT PMアドバンス2（見積り編）2025/09/24"
+  },
+  {
+    "invoice_date": "2025-11-11",
+    "due_date": "2025-12-11",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "HPE定期 DevOps（注文書No. KT251105-01C）",
+        "quantity": 1,
+        "unit_price": "160000.0",
+        "amount": "160000.0",
+        "description": "実施期間: 2025-11-10 〜 2025-11-11 / 日数: 2日"
+      }
+    ],
+    "subtotal": 160000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 16000.0,
+    "total_amount": 176000.0,
+    "notes": "注文書No. KT251105-01C\n日付: 2025年10月24日\n業務名: 2025年度 依頼作業（11月）\n\n項目: ①11/10-11 HPE定期 DevOps（2日×80,000）\n\n※HPE案件につきましては受講者4名以下の場合は単金\"¥60,000\"にてご請求願います\n\n請求期限: 2025年12月03日（水）\n支払期限: 2025年12月31日（水）\n支払条件: 実施月末締め、翌月末払い\n\nNotion案件ID: d71eb718-7598-4120-8a65-9706117a1dd7",
+    "source_id": "d71eb718-7598-4120-8a65-9706117a1dd7",
+    "project_name": "HPE定期 DevOps（注文書No. KT251105-01C）"
+  },
+  {
+    "invoice_date": "2025-10-21",
+    "due_date": "2025-11-20",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4ファンデーション @TC社（v3.3） (PO-I2025108)",
+        "quantity": 1,
+        "unit_price": "140000.0",
+        "amount": "140000.0",
+        "description": "実施期間: 2025-10-20 〜 2025-10-21 / 参加人数: 6名 / 日数: 2日 / 場所: 三浦様のトレノケートドメインのアドレス宛に届きます\nパートナー名: トレノケート株式会社 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 140000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 14000.0,
+    "total_amount": 154000.0,
+    "notes": "発注No: PO-I2025108\nパートナー名: トレノケート株式会社\n担当者：渡邉/前場\n承認者：藤田\n依頼日：2025/10/20\n\n合計額（税込）：¥154,000\n源泉所得税：交通費・宿泊費含んだ合計金額×10.21％\n\nNotion案件ID: e252d9e3-d297-4ac2-b248-385ce876b405",
+    "source_id": "e252d9e3-d297-4ac2-b248-385ce876b405",
+    "project_name": "ITIL 4ファンデーション @TC社（v3.3） (PO-I2025108)"
+  },
+  {
+    "invoice_date": "2025-10-24",
+    "due_date": "2025-11-23",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL4 DPIコース @株式会社インテック (v2.1) (PO-I2025099)",
+        "quantity": 1,
+        "unit_price": "240000.0",
+        "amount": "240000.0",
+        "description": "実施期間: 2025-10-22 〜 2025-10-24 / 参加人数: 9名 / 日数: 3日 / 場所: 神奈川県横浜市神奈川区新浦島町１丁目１−２５ / 形式: オフライン"
+      }
+    ],
+    "subtotal": 240000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 24000.0,
+    "total_amount": 264000.0,
+    "notes": "発注No: PO-I2025099\n依頼日: 2025/10/15\n担当者: 渡邉/前場\n承認者: 藤田\n\n講師料（税抜）: ¥80,000 × 3日 = ¥240,000\n10％消費税: ¥24,000\n合計額（税込）: ¥264,000\n源泉所得税: 交通費・宿泊費含んだ合計金額×10.21％\n\n時間: 9:00-17:30\n\n備考:\n・内容確認後、講師依頼確認書を依頼日より1週間以内に返送\n・請求書は研修終了後、早めに送付\n\nNotion案件ID: e9541643-a920-4ac5-90ba-4d881a7cb434",
+    "source_id": "e9541643-a920-4ac5-90ba-4d881a7cb434",
+    "project_name": "ITIL4 DPIコース @株式会社インテック (v2.1) (PO-I2025099)"
+  },
+  {
+    "invoice_date": "2025-11-07",
+    "due_date": "2025-12-07",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL 4ファンデーション @NBI社（v3.3） (PO-I2025107)",
+        "quantity": 1,
+        "unit_price": "140000.0",
+        "amount": "140000.0",
+        "description": "実施期間: 2025-11-06 〜 2025-11-07 / 参加人数: 22名 / 日数: 2日 / 場所: 別途ご連絡 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 140000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 14000.0,
+    "total_amount": 154000.0,
+    "notes": "発注No: PO-I2025107\n依頼日：2025/10/28\nパートナー名：NECビジネスインテリジェンス株式会社\n担当者：渡邉/前場\n承認者：藤田\n合計額（税込）：¥154,000\n源泉所得税：交通費・宿泊費含んだ合計金額×10.21％\n\nNotion案件ID: e982d0db-9452-49e9-bdef-b94d7c971ccc",
+    "source_id": "e982d0db-9452-49e9-bdef-b94d7c971ccc",
+    "project_name": "ITIL 4ファンデーション @NBI社（v3.3） (PO-I2025107)"
+  },
+  {
+    "invoice_date": "2025-10-08",
+    "due_date": "2025-11-07",
+    "customer_name": "顧客名未設定",
+    "items": [
+      {
+        "item_name": "ITIL4 DPIコース（v2.1）2025/10/06-08 (PO-I2025083)",
+        "quantity": 1,
+        "unit_price": "180000.0",
+        "amount": "180000.0",
+        "description": "実施期間: 2025-10-06 〜 2025-10-08 / 参加人数: 2名 / 日数: 3日 / 場所: Zoom: https://us02web.zoom.us/j/83845845692 / 形式: オンライン"
+      }
+    ],
+    "subtotal": 180000.0,
+    "tax_rate": 0.1,
+    "tax_amount": 18000.0,
+    "total_amount": 198000.0,
+    "notes": "発注No. PO-I2025083\n講師料：¥180,000（税抜）\n受講者：2名\n担当者：渡邉/前場\n承認者：藤田\nPartner Course Calendar\n\nNotion案件ID: f541ccfd-92a0-4b86-955b-15c0978c7fc3",
+    "source_id": "f541ccfd-92a0-4b86-955b-15c0978c7fc3",
+    "project_name": "ITIL4 DPIコース（v2.1）2025/10/06-08 (PO-I2025083)"
+  }
+]
