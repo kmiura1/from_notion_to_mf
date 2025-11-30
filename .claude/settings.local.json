@@ -3,7 +3,13 @@
     "allow": [
       "Bash(python -m src:*)",
       "Bash(pip install:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(uv --version:*)",
+      "Bash(uv sync:*)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(uv run:*)"
     ],
     "deny": [],
     "ask": []
